@@ -7,6 +7,7 @@ import { creditMonths, balanceChecks } from "./credits-months.js";
 import { creditsHtml } from "./credits-html.js";
 import { localDate } from "./events.js";
 import { eventsHtml, bindEvents, anomalies, quickHtml, bindQuick } from "./events.js";
+import { makeAssistente } from "./assistente.js";
 
 const cfg = window.ENERGIA_CONFIG || {};
 const LIVE = !!(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY);
@@ -24,6 +25,7 @@ const ic = {
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
   bolt: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
   cube: '<path d="M12 2l8 4.5v10L12 22l-8-5.5v-10zM4 6.5l8 5 8-5M12 11.5V22"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
   chev: '<path d="M9 5l7 7-7 7"/>', left: '<path d="M15 5l-7 7 7 7"/>',
   flame: '<path d="M12 3c1 3 4 4.5 4 8.5a4 4 0 0 1-8 0c0-1.5.7-2.5 1.5-3.5C9.7 9.5 11 8 12 3z"/>',
   doc: '<path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6"/>',
@@ -132,8 +134,11 @@ function inicioHtml(h, { today, pill }) {
   <a class="card link" href="#/aparelhos" style="display:block"><div class="top" style="margin-bottom:12px"><h2>Aparelhos agora</h2><span class="more">Detalhes${svg("chev", 14, "currentColor", 2.4)}</span></div>
     <div class="tiles t3" style="gap:10px">${ap("Ar-cond.", ac, C.vio, onTxt(ac, "appliance_ac.power_w"))}${ap("Boiler", bo, C.pink, onTxt(bo, "appliance_boiler.power_w"))}${ap("Outros", outros, C.sl, "Resto da casa")}</div></a>
   ${quickHtml({ carToday: h.car, pool: h.pool, today: today.date })}
+  ${api.mode === "demo" ? askCard : ""}
   </main>${tabbar("inicio")}`;
 }
+// Atalho para a tela do assistente (respostas gravadas da avaliação; ver assistente.js).
+const askCard = `<a class="card link" href="#/assistente" style="display:block"><div class="top" style="margin-bottom:6px"><h2>${svg("chat", 18, C.ui, 2)} Pergunte ao assistente</h2><span class="more">Abrir${svg("chev", 14, "currentColor", 2.4)}</span></div><div class="foot note">Respostas de exemplo do assistente de IA (LangChain.js + Gemini + RAG), com o expert e as ferramentas que ele usou.</div></a>`;
 // Carrega o Início (get_home) com a regra "abre com o que está guardado, atualiza em seguida".
 async function withHome(version, render, after) {
   const today = spNow(), live = api.mode === "live", cached = live ? readHome(today.date) : null;
@@ -312,6 +317,7 @@ async function viewAjustes(version) {
   <div class="cap">CONEXÕES</div><section class="card">${rows || `<div class="empty">${api.mode === "demo" ? "Modo demonstração: sem conexões reais." : "Nenhuma coleta registrada ainda."}</div>`}</section>
   <div class="cap">ENERGIA</div><section class="card"><form class="form" id="tarForm"><label>Tarifa (R$ por kWh, para estimar economia)<input name="t" inputmode="decimal" value="${esc(String(tarifa).replace(".", ","))}"></label><button class="btn ghost" type="submit">Salvar tarifa</button><div class="foot" id="tarMsg" role="status">A tarifa fica salva só neste aparelho.</div></form>
     <div class="conn"><div><b>Atualização dos dados</b><small>Os medidores enviam a cada 5 minutos</small></div><b>5 min</b></div></section>
+  <div class="cap">ASSISTENTE DE IA</div><a class="card link" href="#/assistente" style="display:block"><div class="conn"><div><b>Respostas de exemplo</b><small>Perguntas da avaliação, com expert e ferramentas</small></div><span class="more">Abrir${svg("chev", 14, "currentColor", 2.4)}</span></div></a>
   ${api.mode === "live" ? `<div class="cap">AUDITORIA NEOENERGIA</div><section class="card"><p style="color:var(--mut);font-size:13px;line-height:1.5;margin-top:0">Registre os mostradores 03 e 103 no mesmo momento. A comparação líquida é experimental e não altera a tela inicial.</p><form class="form" id="auditForm"><label>Data e hora<input type="datetime-local" name="measured_at" value="${localNow}" required></label><label>03 – importado (kWh, sem separador)<input name="imp" inputmode="numeric" placeholder="Ex.: 15200" required></label><label>103 – injetado (kWh, sem separador)<input name="exp" inputmode="numeric" placeholder="Ex.: 14007" required></label><label>24 (opcional, sem separador)<input name="r24" inputmode="numeric" placeholder="Ex.: 1731"></label><label>Observação (opcional)<input name="note" maxlength="200"></label><button class="btn ghost" type="submit">Salvar marco</button><div class="foot" id="auditMsg" role="status"></div></form></section>${auditRows || `<div class="empty">Salve o primeiro marco para iniciar a comparação.</div>`}` : ""}
   ${api.mode === "live" ? `<button class="btn ghost" id="out">Sair da conta</button>` : ""}
   <div class="foot">EnergyKontrol · Sua energia sob controle.<br>Versão ${esc(self.APP_VERSION ?? "—")}${self.APP_DATE ? ` · ${self.APP_DATE.split("-").reverse().join("/")}` : ""}<br>${api.mode === "demo" ? "Modo demonstração (dados de exemplo)" : "Conectado ao seu banco"} · As chaves dos medidores ficam só no servidor.</div></main>${tabbar("ajustes")}`;
@@ -333,8 +339,9 @@ function viewLogin(msg = "") {
 const contasViews = makeContas({ get api() { return api; }, header, tabbar, svg, $app, go: () => go(), state });
 const houseHtml = makeHouseHtml({ header, tabbar, svg, flowOf, C });
 const viewCasa = (version) => withHome(version, houseHtml);
-const VIEWS = { inicio: viewInicio, casa: viewCasa, historico: viewHistorico, creditos: viewCreditos, ajustes: viewAjustes, aparelhos: viewAparelhos, ...contasViews };
-const TABOF = { aparelhos: "inicio", contas: "creditos", conta: "creditos", relatorio: "creditos" };
+const viewAssistente = makeAssistente({ header, tabbar, $app, state });
+const VIEWS = { assistente: viewAssistente, inicio: viewInicio, casa: viewCasa, historico: viewHistorico, creditos: viewCreditos, ajustes: viewAjustes, aparelhos: viewAparelhos, ...contasViews };
+const TABOF = { assistente: "inicio", aparelhos: "inicio", contas: "creditos", conta: "creditos", relatorio: "creditos" };
 let busy = 0;
 async function go() {
   const route = (location.hash.replace(/^#\//, "") || "inicio").split("?")[0], r = VIEWS[route] ? route : "inicio", my = ++busy;

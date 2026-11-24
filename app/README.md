@@ -16,6 +16,13 @@ os valores vão numa lista logo abaixo, em tela larga viram etiquetas sobre a im
 A imagem é `assets/casa-noite.webp` (184 KB). Para usar uma versão diurna, coloque o arquivo em `assets/` e troque
 `day: null` em `IMAGES`, no `house-view.js`: dia (6h às 18h) usa a diurna, o resto usa a noturna. Não existe mais o modo 2D.
 
+## Tela Assistente
+`#/assistente` (atalho no fim do Início, só no modo demonstração, e em Ajustes) mostra as respostas GRAVADAS do
+assistente de energia (`agent/`) na avaliação com o Gemini: pergunta, resposta, expert e motivo do roteador,
+ferramentas com argumentos, trechos do RAG, checagem de números, tokens e tempo. Não chama IA, banco nem outro site.
+`assistente-exemplos.js` é gerado: `node scripts/assistente-exemplos.mjs` (lê `agent/eval/results/gemini-2026-11-23.json`
+e `agent/eval/dataset.json`). `tests/assistente.test.mjs` falha se o arquivo divergir do resultado da avaliação.
+
 ## Desempenho
 - O Início e a Casa vêm de uma única chamada ao banco (função `get_home`).
 - A última resposta do dia fica guardada no aparelho: a tela abre na hora com ela ("Atualizando...") e troca pelos dados novos.

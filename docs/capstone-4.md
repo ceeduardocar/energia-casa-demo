@@ -14,7 +14,9 @@ estão todos presentes.
 
 Para avaliar sem credenciais:
 
-- **App em modo demonstração:** https://energia-casa-demo.vercel.app (dados de exemplo, sem login).
+- **App em modo demonstração:** https://energia-casa-demo.vercel.app (dados de exemplo, sem login). A tela
+  **Assistente** (`#/assistente`, atalho no fim do Início e em Ajustes) mostra as respostas gravadas do assistente
+  de IA, com o expert, as ferramentas, os trechos do RAG e a checagem de cada resposta.
 - **Cópia pública do código:** este repositório (mesmo código do privado, com identificadores da casa
   trocados por valores de exemplo).
 - **Roteiro de 10 minutos:** seção 14.
@@ -261,7 +263,7 @@ pull request e em cada push no `master`, cada uma num job próprio. A última ro
 
 | Suíte | Onde | Como rodar | Resultado |
 |---|---|---|---|
-| App | `app/tests/` (8 arquivos) | `node --test app/tests/*.test.mjs` | 53 de 53 |
+| App | `app/tests/` (9 arquivos) | `node --test app/tests/*.test.mjs` | 58 de 58 |
 | Coletor | `supabase/functions/collect/tests/` (8 arquivos) | `node --test "supabase/functions/collect/tests/*.test.ts"` | 66 de 66 |
 | Banco | `supabase/tests/` (15 arquivos, cerca de 270 asserções) | `README.md`, seção "Rodar os testes" | 15 de 15 suítes, Postgres 17 no CI |
 | Assistente | `agent/tests/` (13 arquivos) | `cd agent && npm ci && npm test` | 53 de 53 no CI; 3 deles só rodam com Postgres e Weaviate (`AGENT_PG_URL`, `WEAVIATE_HOST`) |
@@ -400,6 +402,13 @@ executor para respeitar `--store` (seção 13).
 
 A análise das falhas, quando houver, é tarefa do subagente `avaliador-assistente` (`.claude/agents/`).
 
+**Na demo.** A tela Assistente do app (`app/assistente.js`) mostra essas 10 respostas reais do Gemini, com o
+expert escolhido pelo roteador e o motivo, as ferramentas chamadas com os argumentos, os trechos recuperados no
+RAG, quantos números a checagem conferiu, tokens e tempo. A tela avisa que são respostas de exemplo e não chama
+IA nem banco: a demo pública não tem chave do Gemini nem dados reais. O arquivo `app/assistente-exemplos.js` é
+gerado do resultado da avaliação por `scripts/assistente-exemplos.mjs`, e `app/tests/assistente.test.mjs` falha
+se os dois divergirem.
+
 ## 10. Observabilidade
 
 **Coletor (produção):**
@@ -486,7 +495,8 @@ advisors, registrados em `docs/2026-11-22-isolamento-seguranca-supabase.md`), a 
 
 ## 14. Como avaliar em 10 minutos
 
-1. Abrir https://energia-casa-demo.vercel.app no celular ou no navegador (dados de exemplo, sem login).
+1. Abrir https://energia-casa-demo.vercel.app no celular ou no navegador (dados de exemplo, sem login) e, no
+   fim do Início, tocar em "Pergunte ao assistente" para ver as respostas do assistente e como ele chegou nelas.
 2. Ler o mapa de requisitos (seção 3) e abrir os arquivos citados.
 3. Ver a última rodada do CI no GitHub (aba Actions): os quatro jobs passam.
 4. Rodar localmente, com Node 22.18 ou mais novo:

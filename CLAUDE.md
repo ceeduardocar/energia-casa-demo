@@ -78,6 +78,8 @@ medidor 2 canais de ar-condicionado e boiler (Tuya), creditos e conta de luz Neo
   docs/superpowers/specs/2026-11-23-assistente-design.md, plano 4. So laboratorio local com dados simulados (agent/lab),
   nunca o Supabase de producao. Testes: `cd agent && npm ci && npm test && npm run eval:offline`. Chave do Gemini so em
   agent/.env. CI em .github/workflows/ci.yml (app, coletor, SQL, assistente). Comandos, subagentes e skills do projeto em .claude/.
+- Tela Assistente no app (1.4.0, 24/11/2026): `#/assistente` mostra respostas gravadas da avaliacao com o Gemini
+  (app/assistente-exemplos.js, gerado por scripts/assistente-exemplos.mjs). Nao chama LLM nem banco; serve a demo publica.
 - App PWA estatico em app/ (sem build). config.js vazio = modo demonstracao. Ver app/README.md.
 - Publicado na Vercel (projeto de producao, fora desta copia publica), ligado ao GitHub desde 2026-10-09
   (Root Directory = app, ramo master): publicar = `git push origin master`. O `vercel deploy` de dentro de app/ NAO
