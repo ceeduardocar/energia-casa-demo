@@ -12,6 +12,8 @@ Sua energia sob controle.
 Sistema pessoal que centraliza a energia da casa (solar, rede, ar-condicionado e
 boiler) num PWA sobre o Supabase. Design: `docs/superpowers/specs/2026-10-08-energia-casa-design.md`.
 
+Documentação da entrega M4.CAPSTONE da pós em IA (enunciado, evidências, avaliação do assistente e roteiro para avaliar): `docs/capstone-4.md`.
+
 Este repositório contém o PWA estático em `app/`, as migrations SQL em
 `supabase/migrations/`, os testes SQL em `supabase/tests/`, as Edge Functions em
 `supabase/functions/` e o assistente de energia (LangChain.js + Gemini + RAG no Weaviate) em `agent/`.
@@ -33,7 +35,7 @@ Este repositório contém o PWA estático em `app/`, as migrations SQL em
 ## Capstone M4: onde está cada requisito
 
 Mapa do enunciado do M4 Capstone ("AI-Augmented Application Development") para os arquivos. A narrativa
-completa fica em `docs/capstone-4.md` (PR #5) e o diário de uso de IA em `docs/historico-ia.md`.
+completa fica em `docs/capstone-4.md` e o diário de uso de IA em `docs/historico-ia.md`.
 
 | Requisito | Onde está |
 |---|---|

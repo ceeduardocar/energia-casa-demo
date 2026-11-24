@@ -2,7 +2,7 @@
 
 Registro de como a IA foi usada no Energia Casa: o que foi pedido, o que o agente fez, o que deu errado e como
 foi corrigido. Complementa o histórico do Git (commits com `Co-Authored-By: Claude` e `Claude-Session:`) e o
-`docs/capstone-4.md` (seções 2 e 4, PR #5).
+`docs/capstone-4.md` (seções 2 e 4).
 
 Ferramentas usadas:
 - **Claude Code** como agente de código, com as skills `superpowers` (brainstorming, writing-plans,
