@@ -1,0 +1,101 @@
+# Roda todas as suítes de teste em cada PR e em cada push no master.
+# Nada aqui fala com o Supabase, a Vercel, a Solarman, a Tuya ou um LLM: o banco é um Postgres
+# descartável do próprio runner e o assistente usa modelo e Weaviate falsos.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  app:
+    name: App (PWA)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test app/tests/*.test.mjs
+
+  coletor:
+    name: Coletor (Edge Function)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test "supabase/functions/collect/tests/*.test.ts"
+
+  sql:
+    name: Banco (migrations + testes SQL, Postgres 17)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+          TZ: UTC
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - run: scripts/test-db.sh
+
+  assistente:
+    name: Assistente (LangChain.js + RAG no Weaviate)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+          TZ: UTC
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+      weaviate:
+        image: cr.weaviate.io/semitechnologies/weaviate:1.32.4
+        env:
+          AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "true"
+          PERSISTENCE_DATA_PATH: /var/lib/weaviate
+          DEFAULT_VECTORIZER_MODULE: none
+          CLUSTER_HOSTNAME: node1
+        ports: ["8080:8080", "50051:50051"]
+    env:
+      AGENT_PG_URL: postgresql://postgres:postgres@localhost:5432/postgres
+      WEAVIATE_HOST: localhost
+    defaults:
+      run:
+        working-directory: agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: agent/package-lock.json
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Laboratório (migrations + seed_demo)
+        run: DATABASE_URL="$AGENT_PG_URL" lab/prepare-db.sh
+      - name: Esperar o Weaviate
+        run: for i in $(seq 1 30); do curl -fs localhost:8080/v1/.well-known/ready && exit 0; sleep 2; done; exit 1
+      - run: npm ci
+      - run: npm test
+      - name: Avaliação offline (modelo roteirizado, sem rede)
+        run: npm run eval:offline

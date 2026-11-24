@@ -1,0 +1,202 @@
+{
+  "properties": [
+    {
+      "code": "forward_energy_total",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 1
+    },
+    {
+      "code": "reverse_energy_total",
+      "value": 12,
+      "time": 1791813024773,
+      "dp_id": 2
+    },
+    {
+      "code": "power_total",
+      "value": 59,
+      "time": 1791816438075,
+      "dp_id": 9
+    },
+    {
+      "code": "forward_energy_1",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 56
+    },
+    {
+      "code": "forward_energy_2",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 57
+    },
+    {
+      "code": "reverse_energy_1",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 59
+    },
+    {
+      "code": "reverse_energy_2",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 60
+    },
+    {
+      "code": "cur_voltage",
+      "value": 2319,
+      "time": 1791816438075,
+      "dp_id": 101
+    },
+    {
+      "code": "current_a",
+      "value": 3940,
+      "time": 1791816438075,
+      "dp_id": 102
+    },
+    {
+      "code": "current_b",
+      "value": 0,
+      "time": 1791813138129,
+      "dp_id": 103
+    },
+    {
+      "code": "power_a",
+      "value": 49,
+      "time": 1791816438075,
+      "dp_id": 104
+    },
+    {
+      "code": "power_b",
+      "value": 10,
+      "time": 1791816438075,
+      "dp_id": 105
+    },
+    {
+      "code": "power_factor_a",
+      "value": 0,
+      "time": 1791815988052,
+      "dp_id": 106
+    },
+    {
+      "code": "power_factor_b",
+      "value": 100,
+      "time": 1791816438075,
+      "dp_id": 107
+    },
+    {
+      "code": "power_setting_a",
+      "value": 500,
+      "time": 1791813024773,
+      "dp_id": 108
+    },
+    {
+      "code": "power_setting_b",
+      "value": 500,
+      "time": 1791813024773,
+      "dp_id": 109
+    },
+    {
+      "code": "power_alarm_a",
+      "value": false,
+      "time": 1791813024773,
+      "dp_id": 110
+    },
+    {
+      "code": "power_alarm_b",
+      "value": false,
+      "time": 1791813138129,
+      "dp_id": 111
+    },
+    {
+      "code": "forward_energy_a_hour",
+      "value": 0,
+      "time": 1791816026061,
+      "dp_id": 112
+    },
+    {
+      "code": "forward_energy_b_hour",
+      "value": 0,
+      "time": 1791816026061,
+      "dp_id": 113
+    },
+    {
+      "code": "forward_energy_total_hour",
+      "value": 0,
+      "time": 1791816026061,
+      "dp_id": 114
+    },
+    {
+      "code": "reverse_energy_a_hour",
+      "value": 0,
+      "time": 1791816026061,
+      "dp_id": 115
+    },
+    {
+      "code": "reverse_energy_b_hour",
+      "value": 0,
+      "time": 1791816026061,
+      "dp_id": 116
+    },
+    {
+      "code": "reverse_energy_total_hour",
+      "value": 0,
+      "time": 1791816026061,
+      "dp_id": 117
+    },
+    {
+      "code": "forward_energy_a",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 118
+    },
+    {
+      "code": "reverse_energy_a",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 119
+    },
+    {
+      "code": "forward_energy_b",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 120
+    },
+    {
+      "code": "reverse_energy_b",
+      "value": 12,
+      "time": 1791813024773,
+      "dp_id": 121
+    },
+    {
+      "code": "voltage_calibration",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 122
+    },
+    {
+      "code": "current_a_calibration",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 123
+    },
+    {
+      "code": "current_b_calibration",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 124
+    },
+    {
+      "code": "power_a_calibration",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 125
+    },
+    {
+      "code": "power_b_calibration",
+      "value": 0,
+      "time": 1791813024773,
+      "dp_id": 126
+    }
+  ]
+}

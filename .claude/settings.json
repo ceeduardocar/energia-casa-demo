@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --test:*)",
+      "Bash(scripts/local-pg.sh:*)",
+      "Bash(scripts/test-db.sh)",
+      "Bash(npm test)",
+      "Bash(npm run eval:offline)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Read(./.env*)",
+      "Read(./**/.env*)"
+    ],
+    "ask": [
+      "Bash(supabase db push:*)",
+      "Bash(vercel deploy:*)",
+      "Bash(git push origin master:*)"
+    ]
+  }
+}

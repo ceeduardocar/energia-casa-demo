@@ -1,0 +1,55 @@
+# Laboratório do assistente: Weaviate (vetores calculados pelo cliente) + Postgres 17 com as migrations do repo
+# e 30 dias simulados (supabase/seed_demo.sql) + Grafana com o painel dos registros do assistente.
+# Nada aqui fala com o Supabase de produção. Tudo escuta só em 127.0.0.1.
+#
+#   docker compose -f agent/lab/docker-compose.yml up -d
+#   DATABASE_URL=postgresql://postgres:lab@localhost:54330/postgres agent/lab/prepare-db.sh   # uma vez, banco vazio
+#   docker compose -f agent/lab/docker-compose.yml down -v                                    # apaga tudo
+name: energia-assistente-lab
+
+services:
+  weaviate:
+    image: cr.weaviate.io/semitechnologies/weaviate:1.32.4
+    command: ["--host", "0.0.0.0", "--port", "8080", "--scheme", "http"]
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:50051:50051"
+    environment:
+      # Só escuta em 127.0.0.1 (portas acima); sem autenticação dentro do laboratório.
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "true"
+      PERSISTENCE_DATA_PATH: /var/lib/weaviate
+      DEFAULT_VECTORIZER_MODULE: none
+      ENABLE_MODULES: ""
+      CLUSTER_HOSTNAME: node1
+      QUERY_DEFAULTS_LIMIT: "25"
+    volumes:
+      - weaviate:/var/lib/weaviate
+
+  postgres:
+    image: postgres:17
+    ports:
+      - "127.0.0.1:54330:5432"
+    environment:
+      POSTGRES_PASSWORD: lab
+      TZ: UTC
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  # Painel dos registros do assistente (tabela obs.perguntas, preenchida por `npm run obs:export`).
+  grafana:
+    image: grafana/grafana-oss:11.6.0
+    depends_on: [postgres]
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /etc/grafana/provisioning/dashboards/assistente.json
+      GF_USERS_DEFAULT_LANGUAGE: pt-BR
+    volumes:
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+
+volumes:
+  weaviate:
+  postgres:

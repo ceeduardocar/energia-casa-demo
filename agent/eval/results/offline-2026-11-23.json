@@ -1,0 +1,727 @@
+{
+  "modo": "offline (modelo roteirizado)",
+  "embeddings": "hash",
+  "gerado_em": "2026-11-23T23:00:01.627Z",
+  "hoje": "2026-11-20",
+  "perguntas": 9,
+  "acertos": 9,
+  "resumo": {
+    "expert": "9/9",
+    "ferramentas": "9/9",
+    "numeros": "9/9",
+    "palavras": "9/9",
+    "documento": "9/9",
+    "sem_alucinacao": "9/9",
+    "sem_erro": "9/9"
+  },
+  "itens": [
+    {
+      "id": "consumo-media",
+      "expert_usado": "consumo",
+      "ferramentas_usadas": [
+        "comparar_periodo"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 14,
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "resposta": "Em 2026-11-19 a casa consumiu 19,5 kWh, contra a média de 17,1 kWh dos 7 dias anteriores (2,4 kWh).\nA maior diferença foi no boiler: 6,5 kWh contra 3,6 kWh na média.\nFontes: comparar_periodo"
+    },
+    {
+      "id": "consumo-dia",
+      "expert_usado": "consumo",
+      "ferramentas_usadas": [
+        "resumo_dia"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 2,
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "resposta": "Em 2026-11-15 a casa consumiu 15,9 kWh e gerou 12,2 kWh, com 36% de autossuficiência.\nAr-condicionado 6,8 kWh, boiler 2,3 kWh, outros 6,8 kWh.\nFontes: resumo_dia"
+    },
+    {
+      "id": "consumo-autossuficiencia",
+      "expert_usado": "consumo",
+      "ferramentas_usadas": [
+        "resumo_dia"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 1,
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "resposta": "Em 2026-11-19 a casa consumiu 19,5 kWh e gerou 12,5 kWh, com 36% de autossuficiência.\nAr-condicionado 5,9 kWh, boiler 6,5 kWh, outros 7,0 kWh.\nFontes: resumo_dia"
+    },
+    {
+      "id": "creditos-minimo",
+      "expert_usado": "creditos",
+      "ferramentas_usadas": [
+        "creditos",
+        "buscar_documentos"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 9,
+      "tokens": {
+        "entrada": 400,
+        "saida": 70,
+        "chamadas_llm": 4
+      },
+      "resposta": "Na conta de 2026-09 a casa consumiu 312 kWh e injetou 312 kWh.\nO mínimo faturado de 100 kWh não sai dos créditos: foram compensados 212 kWh, e sobraram 100 kWh para o saldo.\nFontes: creditos, agent/knowledge/regras-energia.md"
+    },
+    {
+      "id": "creditos-maio",
+      "expert_usado": "creditos",
+      "ferramentas_usadas": [
+        "creditos",
+        "buscar_documentos"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 3,
+      "tokens": {
+        "entrada": 400,
+        "saida": 70,
+        "chamadas_llm": 4
+      },
+      "resposta": "Na conta de 2026-05 a casa consumiu 406 kWh e injetou 251 kWh.\nO mínimo faturado de 100 kWh não sai dos créditos: foram compensados 306 kWh, dos quais 55 kWh vieram de créditos de meses anteriores.\nFontes: creditos, agent/knowledge/regras-energia.md"
+    },
+    {
+      "id": "creditos-conferencia",
+      "expert_usado": "creditos",
+      "ferramentas_usadas": [
+        "creditos",
+        "buscar_documentos"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 3,
+      "tokens": {
+        "entrada": 400,
+        "saida": 70,
+        "chamadas_llm": 4
+      },
+      "resposta": "Saldo na conta de 2026-09: 2.038,67 kWh; saldo do mês (injetado − compensado): 100 kWh.\nA conferência com o mês anterior fecha (diferença 0).\nFontes: creditos"
+    },
+    {
+      "id": "creditos-duracao",
+      "expert_usado": "creditos",
+      "ferramentas_usadas": [
+        "creditos"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 1,
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "resposta": "Saldo atual de 2.084,3 kWh desde 2026-11-15.\nNo ritmo atual dura cerca de 1240 dias.\nFontes: creditos"
+    },
+    {
+      "id": "operacao-tuya-atrasada",
+      "expert_usado": "operacao",
+      "ferramentas_usadas": [
+        "status_coleta",
+        "buscar_documentos"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 6,
+      "tokens": {
+        "entrada": 400,
+        "saida": 70,
+        "chamadas_llm": 4
+      },
+      "resposta": "solarman: em dia, última rodada há 2 min.\ntuya: atrasada, última rodada há 120 min.\nFontes: status_coleta, agent/knowledge/regras-energia.md, docs/superpowers/specs/2026-10-08-energia-casa-design.md"
+    },
+    {
+      "id": "operacao-solarman-noite",
+      "expert_usado": "operacao",
+      "ferramentas_usadas": [
+        "status_coleta"
+      ],
+      "expert": true,
+      "ferramentas": true,
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 2,
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "resposta": "solarman: pausa noturna, última rodada há 185 min.\ntuya: em dia, última rodada há 2 min.\nFontes: status_coleta"
+    }
+  ],
+  "registros": [
+    {
+      "id": "dbbd022d-19e6-48ad-9264-6299fc91a908",
+      "inicio": "2026-11-23T23:00:01.583Z",
+      "pergunta": "Por que ontem consumi mais que a média?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "consumo",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 10
+      },
+      "passos": [
+        {
+          "ferramenta": "comparar_periodo",
+          "args": {
+            "dia": "2026-11-19",
+            "dias_antes": 7
+          },
+          "ms": 2,
+          "ok": true,
+          "bytes": 604
+        }
+      ],
+      "recuperados": [],
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 6,
+        "sem_fonte": []
+      },
+      "resposta": "Em 2026-11-19 a casa consumiu 19,5 kWh, contra a média de 17,1 kWh dos 7 dias anteriores (2,4 kWh).\nA maior diferença foi no boiler: 6,5 kWh contra 3,6 kWh na média.\nFontes: comparar_periodo",
+      "ms_total": 14
+    },
+    {
+      "id": "b3f9c06b-72cb-418c-8304-fff146690178",
+      "inicio": "2026-11-23T23:00:01.598Z",
+      "pergunta": "Quanto a casa gerou e consumiu em 2026-11-15?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "consumo",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 1
+      },
+      "passos": [
+        {
+          "ferramenta": "resumo_dia",
+          "args": {
+            "dia": "2026-11-15"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 244
+        }
+      ],
+      "recuperados": [],
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 6,
+        "sem_fonte": []
+      },
+      "resposta": "Em 2026-11-15 a casa consumiu 15,9 kWh e gerou 12,2 kWh, com 36% de autossuficiência.\nAr-condicionado 6,8 kWh, boiler 2,3 kWh, outros 6,8 kWh.\nFontes: resumo_dia",
+      "ms_total": 2
+    },
+    {
+      "id": "2dfea1ce-a78c-40ee-ac35-b8c3f415c9a5",
+      "inicio": "2026-11-23T23:00:01.600Z",
+      "pergunta": "Qual foi a autossuficiência de ontem?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "consumo",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 0
+      },
+      "passos": [
+        {
+          "ferramenta": "resumo_dia",
+          "args": {
+            "dia": "2026-11-19"
+          },
+          "ms": 0,
+          "ok": true,
+          "bytes": 244
+        }
+      ],
+      "recuperados": [],
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 6,
+        "sem_fonte": []
+      },
+      "resposta": "Em 2026-11-19 a casa consumiu 19,5 kWh e gerou 12,5 kWh, com 36% de autossuficiência.\nAr-condicionado 5,9 kWh, boiler 6,5 kWh, outros 7,0 kWh.\nFontes: resumo_dia",
+      "ms_total": 1
+    },
+    {
+      "id": "03044d60-24d4-49b9-a1d6-1558fa9852c8",
+      "inicio": "2026-11-23T23:00:01.602Z",
+      "pergunta": "Por que a conta de setembro veio com 100 kWh se eu injetei mais do que consumi?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "creditos",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 0
+      },
+      "passos": [
+        {
+          "ferramenta": "creditos",
+          "args": {},
+          "ms": 2,
+          "ok": true,
+          "bytes": 1490
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+            "colecao": "RegrasEnergia"
+          },
+          "ms": 6,
+          "ok": true,
+          "bytes": 2121
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Na casa",
+          "score": 0.989
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > A regra",
+          "score": 0.834
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Como entra no cálculo dos créditos",
+          "score": 0.766
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 5. Créditos no sistema",
+          "score": 0.522
+        }
+      ],
+      "tokens": {
+        "entrada": 400,
+        "saida": 70,
+        "chamadas_llm": 4
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 7,
+        "sem_fonte": []
+      },
+      "resposta": "Na conta de 2026-09 a casa consumiu 312 kWh e injetou 312 kWh.\nO mínimo faturado de 100 kWh não sai dos créditos: foram compensados 212 kWh, e sobraram 100 kWh para o saldo.\nFontes: creditos, agent/knowledge/regras-energia.md",
+      "ms_total": 9
+    },
+    {
+      "id": "1ad6f558-1a56-4c78-b716-e1d089ed6d9f",
+      "inicio": "2026-11-23T23:00:01.611Z",
+      "pergunta": "Quanto foi compensado na conta de maio de 2026?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "creditos",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 0
+      },
+      "passos": [
+        {
+          "ferramenta": "creditos",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 1490
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+            "colecao": "RegrasEnergia"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 2121
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Na casa",
+          "score": 0.989
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > A regra",
+          "score": 0.834
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Como entra no cálculo dos créditos",
+          "score": 0.766
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 5. Créditos no sistema",
+          "score": 0.522
+        }
+      ],
+      "tokens": {
+        "entrada": 400,
+        "saida": 70,
+        "chamadas_llm": 4
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 7,
+        "sem_fonte": []
+      },
+      "resposta": "Na conta de 2026-05 a casa consumiu 406 kWh e injetou 251 kWh.\nO mínimo faturado de 100 kWh não sai dos créditos: foram compensados 306 kWh, dos quais 55 kWh vieram de créditos de meses anteriores.\nFontes: creditos, agent/knowledge/regras-energia.md",
+      "ms_total": 3
+    },
+    {
+      "id": "8e26090f-ee81-4a02-be9f-ebd0021f1256",
+      "inicio": "2026-11-23T23:00:01.614Z",
+      "pergunta": "O saldo de créditos da conta de setembro bate com o de agosto?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "creditos",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 0
+      },
+      "passos": [
+        {
+          "ferramenta": "creditos",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 1490
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+            "colecao": "RegrasEnergia"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 2121
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Na casa",
+          "score": 0.989
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > A regra",
+          "score": 0.834
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Como entra no cálculo dos créditos",
+          "score": 0.766
+        },
+        {
+          "consulta": "mínimo faturado 100 kWh trifásica conta compensação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 5. Créditos no sistema",
+          "score": 0.522
+        }
+      ],
+      "tokens": {
+        "entrada": 400,
+        "saida": 70,
+        "chamadas_llm": 4
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 5,
+        "sem_fonte": []
+      },
+      "resposta": "Saldo na conta de 2026-09: 2.038,67 kWh; saldo do mês (injetado − compensado): 100 kWh.\nA conferência com o mês anterior fecha (diferença 0).\nFontes: creditos",
+      "ms_total": 3
+    },
+    {
+      "id": "690c68e4-e6f1-40dc-a97d-3fc6bda19a09",
+      "inicio": "2026-11-23T23:00:01.617Z",
+      "pergunta": "Quanto tempo meu saldo de créditos ainda dura?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "creditos",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 0
+      },
+      "passos": [
+        {
+          "ferramenta": "creditos",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 1490
+        }
+      ],
+      "recuperados": [],
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 2,
+        "sem_fonte": []
+      },
+      "resposta": "Saldo atual de 2.084,3 kWh desde 2026-11-15.\nNo ritmo atual dura cerca de 1240 dias.\nFontes: creditos",
+      "ms_total": 1
+    },
+    {
+      "id": "5e421387-3098-4210-9485-9ba160b3951a",
+      "inicio": "2026-11-23T23:00:01.619Z",
+      "pergunta": "A coleta da Tuya está funcionando?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "operacao",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 0
+      },
+      "passos": [
+        {
+          "ferramenta": "status_coleta",
+          "args": {},
+          "ms": 0,
+          "ok": true,
+          "bytes": 421
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "coleta falhando atrasada causa provável token teste Tuya IoT Core"
+          },
+          "ms": 5,
+          "ok": true,
+          "bytes": 3797
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "coleta falhando atrasada causa provável token teste Tuya IoT Core",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 6. Coleta e qualidade dos dados > Falhas conhecidas",
+          "score": 1
+        },
+        {
+          "consulta": "coleta falhando atrasada causa provável token teste Tuya IoT Core",
+          "colecao": "ProjetoDocs",
+          "caminho": "docs/superpowers/specs/2026-10-08-energia-casa-design.md",
+          "titulo": "Energia Casa — design (spec) > 4. Fontes de dados > 4.2 Tuya Cloud API",
+          "score": 0.767
+        },
+        {
+          "consulta": "coleta falhando atrasada causa provável token teste Tuya IoT Core",
+          "colecao": "ProjetoDocs",
+          "caminho": "docs/superpowers/specs/2026-10-08-energia-casa-design.md",
+          "titulo": "Energia Casa — design (spec) > 5. Modelo de dados > Tabelas",
+          "score": 0.486
+        },
+        {
+          "consulta": "coleta falhando atrasada causa provável token teste Tuya IoT Core",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 6. Coleta e qualidade dos dados > Diagnóstico",
+          "score": 0.421
+        }
+      ],
+      "tokens": {
+        "entrada": 400,
+        "saida": 70,
+        "chamadas_llm": 4
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 2,
+        "sem_fonte": []
+      },
+      "resposta": "solarman: em dia, última rodada há 2 min.\ntuya: atrasada, última rodada há 120 min.\nFontes: status_coleta, agent/knowledge/regras-energia.md, docs/superpowers/specs/2026-10-08-energia-casa-design.md",
+      "ms_total": 6
+    },
+    {
+      "id": "843a916f-56d4-48aa-bf5b-7b3bb69e62d4",
+      "inicio": "2026-11-23T23:00:01.625Z",
+      "pergunta": "A Solarman está sem dados novos há horas, a coleta falhou?",
+      "hoje": "2026-11-20",
+      "modelo": "scripted-offline",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "operacao",
+        "motivo": "política offline por palavras-chave",
+        "reserva": false,
+        "ms": 0
+      },
+      "passos": [
+        {
+          "ferramenta": "status_coleta",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 426
+        }
+      ],
+      "recuperados": [],
+      "tokens": {
+        "entrada": 300,
+        "saida": 60,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 2,
+        "sem_fonte": []
+      },
+      "resposta": "solarman: pausa noturna, última rodada há 185 min.\ntuya: em dia, última rodada há 2 min.\nFontes: status_coleta",
+      "ms_total": 2
+    }
+  ]
+}

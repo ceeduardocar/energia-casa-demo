@@ -1,0 +1,15 @@
+# Postgres do laboratório (serviço "postgres" do docker-compose). Senha do laboratório, não de produção.
+apiVersion: 1
+datasources:
+  - name: Laboratorio
+    uid: lab-pg
+    type: grafana-postgresql-datasource
+    url: postgres:5432
+    user: postgres
+    secureJsonData:
+      password: lab
+    jsonData:
+      database: postgres
+      sslmode: disable
+      postgresVersion: 1700
+    isDefault: true

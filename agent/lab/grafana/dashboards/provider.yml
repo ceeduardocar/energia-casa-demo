@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: assistente
+    folder: Energia Casa
+    type: file
+    options:
+      path: /etc/grafana/provisioning/dashboards

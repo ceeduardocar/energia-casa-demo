@@ -1,0 +1,1013 @@
+{
+  "modo": "gemini (gemini-3.8-flash)",
+  "embeddings": "hash",
+  "gerado_em": "2026-11-23T23:03:47.069Z",
+  "hoje": "2026-11-20",
+  "perguntas": 10,
+  "acertos": 10,
+  "resumo": {
+    "expert": "10/10",
+    "ferramentas": "10/10",
+    "numeros": "10/10",
+    "palavras": "10/10",
+    "documento": "10/10",
+    "sem_alucinacao": "10/10",
+    "sem_erro": "10/10"
+  },
+  "itens": [
+    {
+      "id": "consumo-media",
+      "expert": "consumo",
+      "ferramentas": [
+        "resumo_dia",
+        "comparar_periodo",
+        "buscar_documentos"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 18179,
+      "tokens": {
+        "entrada": 4492,
+        "saida": 302,
+        "chamadas_llm": 4
+      },
+      "resposta": "Ontem (19/11/2026), a casa consumiu 19,5 kWh, registrando 2,4 kWh a mais que a média dos últimos 7 dias (17,1 kWh). O principal responsável por esse aumento foi o boiler, que consumiu 6,5 kWh contra uma média de 3,6 kWh, totalizando 2,9 kWh adicionais. Em contrapartida, o ar-condicionado gastou 5,9 kWh, ficando 0,5 kWh abaixo da sua média de 6,5 kWh. A categoria outros aparelhos consumiu 7,0 kWh, exatamente igual à sua média recente. No total, a geração solar foi de 12,5 kWh, com 12,4 kWh importados da rede e 5,4 kWh exportados.\n\nFontes: resumo_dia, comparar_periodo, buscar_documentos (v_house_daily/2026-11-19)."
+    },
+    {
+      "id": "consumo-dia",
+      "expert": "consumo",
+      "ferramentas": [
+        "resumo_dia"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 11455,
+      "tokens": {
+        "entrada": 1601,
+        "saida": 153,
+        "chamadas_llm": 3
+      },
+      "resposta": "Em 15 de novembro de 2026, a casa gerou 12,2 kWh de energia solar e teve um consumo total de 15,9 kWh. Da rede elétrica, foram importados 10,2 kWh e injetados (exportados) 6,5 kWh, atingindo uma autossuficiência de 36%. Do consumo registrado, o ar-condicionado consumiu 6,8 kWh, o boiler gastou 2,3 kWh e as demais cargas (outros) somaram 6,8 kWh.\n\nFontes: resumo_dia"
+    },
+    {
+      "id": "consumo-autossuficiencia",
+      "expert": "consumo",
+      "ferramentas": [
+        "resumo_dia"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 7254,
+      "tokens": {
+        "entrada": 1598,
+        "saida": 133,
+        "chamadas_llm": 3
+      },
+      "resposta": "A autossuficiência energética de ontem (19/11/2026) foi de 36%. Do consumo total de 19,5 kWh, 7,1 kWh vieram diretamente do autoconsumo da geração solar, enquanto 12,4 kWh foram importados da rede elétrica. A geração solar total do dia atingiu 12,5 kWh, dos quais 5,4 kWh foram exportados.\n\nFontes: resumo_dia (v_house_daily)."
+    },
+    {
+      "id": "creditos-minimo",
+      "expert": "creditos",
+      "ferramentas": [
+        "creditos",
+        "buscar_documentos",
+        "buscar_documentos"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 22208,
+      "tokens": {
+        "entrada": 4700,
+        "saida": 314,
+        "chamadas_llm": 3
+      },
+      "resposta": "Como o padrão de ligação da casa é trifásico, a distribuidora cobra um custo de disponibilidade obrigatório de 100 kWh mensais. Pela regra do setor elétrico, esse consumo mínimo faturado não pode ser abatido com créditos solares: compensa-se unicamente o volume consumido acima dele. Na fatura de setembro de 2026, a residência consumiu 312,0 kWh e injetou 312,0 kWh na rede. Dessa forma, foram compensados 212,0 kWh do consumo e faturados obrigatoriamente os 100,0 kWh do piso da ligação. A sobra de 100,0 kWh injetados virou crédito para os meses seguintes, elevando o saldo acumulado na conta para 2.038,7 kWh.\n\nFontes: ferramentas creditos e buscar_documentos; agent/knowledge/regras-energia.md; app/tests/fixtures/conta-09-2026.json."
+    },
+    {
+      "id": "creditos-maio",
+      "expert": "creditos",
+      "ferramentas": [
+        "creditos",
+        "buscar_documentos",
+        "buscar_documentos"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 17972,
+      "tokens": {
+        "entrada": 9809,
+        "saida": 204,
+        "chamadas_llm": 5
+      },
+      "resposta": "Na conta de maio de 2026, foram compensados 306 kWh. O consumo da rede no mês foi de 406 kWh, dos quais 100 kWh correspondem ao mínimo faturado da ligação trifásica, que não sai dos créditos. Para cobrir o excedente compensado de 306 kWh, foram utilizados 251 kWh injetados na rede no próprio mês e 55 kWh do saldo de créditos anteriores.\n\nFontes: creditos, buscar_documentos (agent/knowledge/regras-energia.md)."
+    },
+    {
+      "id": "creditos-conferencia",
+      "expert": "creditos",
+      "ferramentas": [
+        "creditos",
+        "buscar_documentos",
+        "buscar_documentos"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 17857,
+      "tokens": {
+        "entrada": 9675,
+        "saida": 271,
+        "chamadas_llm": 4
+      },
+      "resposta": "Sim, o saldo de créditos da conta de setembro de 2026 bate perfeitamente com o de agosto de 2026. A fatura de agosto encerrou com saldo de 1938,7 kWh. No mês de setembro, foram injetados 312,0 kWh e compensados 212,0 kWh — pois o mínimo faturado de 100,0 kWh não é compensado —, gerando um acréscimo de 100,0 kWh. Dessa forma, o saldo registrado na conta de setembro fechou exatamente em 2038,7 kWh, apresentando diferença de 0,0 kWh na conferência oficial.\n\nFontes: creditos, buscar_documentos (app/tests/fixtures/conta-08-2026.json, app/tests/fixtures/conta-09-2026.json)"
+    },
+    {
+      "id": "creditos-duracao",
+      "expert": "creditos",
+      "ferramentas": [
+        "creditos",
+        "buscar_documentos"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 14923,
+      "tokens": {
+        "entrada": 4191,
+        "saida": 163,
+        "chamadas_llm": 4
+      },
+      "resposta": "Seu saldo atual acumulado é de 2084,3 kWh. Com base no consumo líquido médio recente de 1,7 kWh por dia, a estimativa é de que esse saldo dure aproximadamente 1.240 dias (cerca de 3 anos e 5 meses). Vale lembrar que, pelas regras do Sistema de Compensação de Energia Elétrica (SCEE), os créditos têm validade de 60 meses antes de expirarem.\n\nFontes: creditos e agent/knowledge/regras-energia.md (RegrasEnergia)."
+    },
+    {
+      "id": "operacao-tuya-atrasada",
+      "expert": "operacao",
+      "ferramentas": [
+        "status_coleta",
+        "buscar_documentos"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 19506,
+      "tokens": {
+        "entrada": 3604,
+        "saida": 253,
+        "chamadas_llm": 4
+      },
+      "resposta": "A coleta da Tuya não está funcionando como esperado: seu diagnóstico atual é \"atrasada\", com a última rodada registrada há 120 minutos. Em contrapartida, a coleta da Solarman está \"em dia\", tendo sua última rodada ocorrida há 2 minutos. Como a Tuya deve coletar dados a cada 5 minutos ao longo de 24 horas, qualquer intervalo superior a 12 minutos caracteriza atraso. Segundo as especificações do projeto, as causas prováveis para falhas ou atrasos na Tuya envolvem instabilidade na API/rede, token expirado ou assinatura de teste da plataforma Tuya vencida. Quando isso ocorre, o incidente é registrado na tabela `collector_runs`, mantendo a consistência dos dados acumulados assim que o serviço for restabelecido.\n\nFontes: status_coleta, buscar_documentos (docs/superpowers/specs/2026-10-08-energia-casa-design.md)."
+    },
+    {
+      "id": "operacao-solarman-noite",
+      "expert": "operacao",
+      "ferramentas": [
+        "status_coleta"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 11785,
+      "tokens": {
+        "entrada": 1274,
+        "saida": 124,
+        "chamadas_llm": 3
+      },
+      "resposta": "Não, a coleta da Solarman não falhou. A fonte Solarman está com diagnóstico de pausa noturna e idade de 185 minutos desde a última rodada, pois opera apenas entre 06:30 e 18:55 no horário de Brasília. Já a fonte Tuya funciona 24 horas, apresenta diagnóstico em dia e idade de 2 minutos na última rodada. Portanto, a ausência de novos dados da Solarman no período noturno é o comportamento normal esperado.\n\nFontes: status_coleta"
+    },
+    {
+      "id": "rag-contadores-tuya",
+      "expert": "operacao",
+      "ferramentas": [
+        "buscar_documentos",
+        "status_coleta"
+      ],
+      "numeros": true,
+      "palavras": true,
+      "documento": true,
+      "sem_alucinacao": true,
+      "sem_erro": true,
+      "ok": true,
+      "sem_fonte": [],
+      "ms": 18460,
+      "tokens": {
+        "entrada": 2306,
+        "saida": 241,
+        "chamadas_llm": 3
+      },
+      "resposta": "O sistema não utiliza os contadores de energia da Tuya porque eles inflam a exportação para a rede em cerca de 30%. Entre 15/10 e 20/10/2026, os contadores registraram 62,0 kWh importados e 60,9 kWh exportados, enquanto a fatura da Neoenergia apontou 55 e 46 kWh, e o cálculo por integração da potência assinada resultou em 53,7 kWh e 47,0 kWh. Por esse motivo, a medição é feita integrando a potência assinada (`power_signed_w`). Operacionalmente, a fonte Solarman está com diagnóstico \"em dia\" (idade de 2 minutos) e a fonte Tuya também está com diagnóstico \"em dia\" (idade de 2 minutos).\n\nFontes: status_coleta, buscar_documentos (agent/knowledge/regras-energia.md)."
+    }
+  ],
+  "registros": [
+    {
+      "id": "57eea00b-d141-42eb-af4a-8013aa6f0d4b",
+      "inicio": "2026-11-23T23:01:07.465Z",
+      "pergunta": "Por que ontem consumi mais que a média?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "consumo",
+        "motivo": "A pergunta trata sobre o consumo diário de energia e comparação com a média.",
+        "reserva": false,
+        "ms": 3797
+      },
+      "passos": [
+        {
+          "ferramenta": "resumo_dia",
+          "args": {
+            "dia": "2026-11-19"
+          },
+          "ms": 5,
+          "ok": true,
+          "bytes": 244
+        },
+        {
+          "ferramenta": "comparar_periodo",
+          "args": {
+            "dia": "2026-11-19"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 604
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "2026-11-19 boiler",
+            "colecao": "ResumoDiario"
+          },
+          "ms": 3,
+          "ok": true,
+          "bytes": 1228
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "2026-11-19 boiler",
+          "colecao": "ResumoDiario",
+          "caminho": "v_house_daily/2026-11-19",
+          "titulo": "Dia 2026-11-19 (Qui)",
+          "score": 1
+        },
+        {
+          "consulta": "2026-11-19 boiler",
+          "colecao": "ResumoDiario",
+          "caminho": "v_house_daily/2026-11-01",
+          "titulo": "Dia 2026-11-01 (Dom)",
+          "score": 0.652
+        },
+        {
+          "consulta": "2026-11-19 boiler",
+          "colecao": "ResumoDiario",
+          "caminho": "v_house_daily/2026-11-05",
+          "titulo": "Dia 2026-11-05 (Qui)",
+          "score": 0.645
+        },
+        {
+          "consulta": "2026-11-19 boiler",
+          "colecao": "ResumoDiario",
+          "caminho": "v_house_daily/2026-11-10",
+          "titulo": "Dia 2026-11-10 (Ter)",
+          "score": 0.645
+        }
+      ],
+      "tokens": {
+        "entrada": 4492,
+        "saida": 302,
+        "chamadas_llm": 4
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 14,
+        "sem_fonte": []
+      },
+      "resposta": "Ontem (19/11/2026), a casa consumiu 19,5 kWh, registrando 2,4 kWh a mais que a média dos últimos 7 dias (17,1 kWh). O principal responsável por esse aumento foi o boiler, que consumiu 6,5 kWh contra uma média de 3,6 kWh, totalizando 2,9 kWh adicionais. Em contrapartida, o ar-condicionado gastou 5,9 kWh, ficando 0,5 kWh abaixo da sua média de 6,5 kWh. A categoria outros aparelhos consumiu 7,0 kWh, exatamente igual à sua média recente. No total, a geração solar foi de 12,5 kWh, com 12,4 kWh importados da rede e 5,4 kWh exportados.\n\nFontes: resumo_dia, comparar_periodo, buscar_documentos (v_house_daily/2026-11-19).",
+      "ms_total": 18179
+    },
+    {
+      "id": "4673741f-1ecf-48d0-be8a-0816bbdde0bd",
+      "inicio": "2026-11-23T23:01:25.645Z",
+      "pergunta": "Quanto a casa gerou e consumiu em 2026-11-15?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "consumo",
+        "motivo": "A pergunta busca saber os dados de geração e consumo de energia em uma data específica.",
+        "reserva": false,
+        "ms": 4460
+      },
+      "passos": [
+        {
+          "ferramenta": "resumo_dia",
+          "args": {
+            "dia": "2026-11-15"
+          },
+          "ms": 0,
+          "ok": true,
+          "bytes": 244
+        }
+      ],
+      "recuperados": [],
+      "tokens": {
+        "entrada": 1601,
+        "saida": 153,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 10,
+        "sem_fonte": []
+      },
+      "resposta": "Em 15 de novembro de 2026, a casa gerou 12,2 kWh de energia solar e teve um consumo total de 15,9 kWh. Da rede elétrica, foram importados 10,2 kWh e injetados (exportados) 6,5 kWh, atingindo uma autossuficiência de 36%. Do consumo registrado, o ar-condicionado consumiu 6,8 kWh, o boiler gastou 2,3 kWh e as demais cargas (outros) somaram 6,8 kWh.\n\nFontes: resumo_dia",
+      "ms_total": 11455
+    },
+    {
+      "id": "55679c8d-ee79-476a-bcfe-ffee6e2129bc",
+      "inicio": "2026-11-23T23:01:37.100Z",
+      "pergunta": "Qual foi a autossuficiência de ontem?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "consumo",
+        "motivo": "A pergunta trata sobre autossuficiência energética de um dia específico.",
+        "reserva": false,
+        "ms": 2561
+      },
+      "passos": [
+        {
+          "ferramenta": "resumo_dia",
+          "args": {
+            "dia": "2026-11-19"
+          },
+          "ms": 0,
+          "ok": true,
+          "bytes": 244
+        }
+      ],
+      "recuperados": [],
+      "tokens": {
+        "entrada": 1598,
+        "saida": 133,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 6,
+        "sem_fonte": []
+      },
+      "resposta": "A autossuficiência energética de ontem (19/11/2026) foi de 36%. Do consumo total de 19,5 kWh, 7,1 kWh vieram diretamente do autoconsumo da geração solar, enquanto 12,4 kWh foram importados da rede elétrica. A geração solar total do dia atingiu 12,5 kWh, dos quais 5,4 kWh foram exportados.\n\nFontes: resumo_dia (v_house_daily).",
+      "ms_total": 7254
+    },
+    {
+      "id": "35b0d0a5-73a8-4268-9dfe-852a0212a019",
+      "inicio": "2026-11-23T23:01:44.355Z",
+      "pergunta": "Por que a conta de setembro veio com 100 kWh se eu injetei mais do que consumi?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "creditos",
+        "motivo": "Trata sobre cobrança na fatura, compensação de energia injetada e taxa mínima de faturamento.",
+        "reserva": false,
+        "ms": 4676
+      },
+      "passos": [
+        {
+          "ferramenta": "creditos",
+          "args": {},
+          "ms": 2,
+          "ok": true,
+          "bytes": 1490
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "custo de disponibilidade 100 kWh trifasico compensacao creditos",
+            "colecao": "RegrasEnergia"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 1736
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "colecao": "Contas",
+            "consulta": "setembro 100 kWh fatura consumo injetado compensado"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 3531
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "custo de disponibilidade 100 kWh trifasico compensacao creditos",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Na casa",
+          "score": 0.94
+        },
+        {
+          "consulta": "custo de disponibilidade 100 kWh trifasico compensacao creditos",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Como entra no cálculo dos créditos",
+          "score": 0.912
+        },
+        {
+          "consulta": "custo de disponibilidade 100 kWh trifasico compensacao creditos",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > A regra",
+          "score": 0.615
+        },
+        {
+          "consulta": "custo de disponibilidade 100 kWh trifasico compensacao creditos",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 1. Sistema de compensação de energia (SCEE) > Validade dos créditos",
+          "score": 0.53
+        },
+        {
+          "consulta": "setembro 100 kWh fatura consumo injetado compensado",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-05-2026.json",
+          "titulo": "Conta 2026-05",
+          "score": 0.833
+        },
+        {
+          "consulta": "setembro 100 kWh fatura consumo injetado compensado",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-07-2026.json",
+          "titulo": "Conta 2026-07",
+          "score": 0.665
+        },
+        {
+          "consulta": "setembro 100 kWh fatura consumo injetado compensado",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-09-2026.json",
+          "titulo": "Conta 2026-09",
+          "score": 0.5
+        },
+        {
+          "consulta": "setembro 100 kWh fatura consumo injetado compensado",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-08-2026.json",
+          "titulo": "Conta 2026-08",
+          "score": 0.407
+        }
+      ],
+      "tokens": {
+        "entrada": 4700,
+        "saida": 314,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 10,
+        "sem_fonte": []
+      },
+      "resposta": "Como o padrão de ligação da casa é trifásico, a distribuidora cobra um custo de disponibilidade obrigatório de 100 kWh mensais. Pela regra do setor elétrico, esse consumo mínimo faturado não pode ser abatido com créditos solares: compensa-se unicamente o volume consumido acima dele. Na fatura de setembro de 2026, a residência consumiu 312,0 kWh e injetou 312,0 kWh na rede. Dessa forma, foram compensados 212,0 kWh do consumo e faturados obrigatoriamente os 100,0 kWh do piso da ligação. A sobra de 100,0 kWh injetados virou crédito para os meses seguintes, elevando o saldo acumulado na conta para 2.038,7 kWh.\n\nFontes: ferramentas creditos e buscar_documentos; agent/knowledge/regras-energia.md; app/tests/fixtures/conta-09-2026.json.",
+      "ms_total": 22208
+    },
+    {
+      "id": "7e808bef-cb15-45ca-a2ea-01434ab36f86",
+      "inicio": "2026-11-23T23:02:06.564Z",
+      "pergunta": "Quanto foi compensado na conta de maio de 2026?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "creditos",
+        "motivo": "Trata da compensação de energia e detalhes da conta de luz.",
+        "reserva": false,
+        "ms": 2212
+      },
+      "passos": [
+        {
+          "ferramenta": "creditos",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 1490
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "maio 2026 compensado faturado",
+            "colecao": "Contas"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 3537
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "colecao": "RegrasEnergia",
+            "consulta": "compensação mínimo faturado trifásico créditos"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 1988
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "maio 2026 compensado faturado",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-08-2026.json",
+          "titulo": "Conta 2026-08",
+          "score": 0.839
+        },
+        {
+          "consulta": "maio 2026 compensado faturado",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-09-2026.json",
+          "titulo": "Conta 2026-09",
+          "score": 0.78
+        },
+        {
+          "consulta": "maio 2026 compensado faturado",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-07-2026.json",
+          "titulo": "Conta 2026-07",
+          "score": 0.71
+        },
+        {
+          "consulta": "maio 2026 compensado faturado",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-06-2026.json",
+          "titulo": "Conta 2026-06",
+          "score": 0.295
+        },
+        {
+          "consulta": "compensação mínimo faturado trifásico créditos",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Na casa",
+          "score": 1
+        },
+        {
+          "consulta": "compensação mínimo faturado trifásico créditos",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 2. Mínimo faturado (custo de disponibilidade) > Como entra no cálculo dos créditos",
+          "score": 0.656
+        },
+        {
+          "consulta": "compensação mínimo faturado trifásico créditos",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 1. Sistema de compensação de energia (SCEE) > Validade dos créditos",
+          "score": 0.585
+        },
+        {
+          "consulta": "compensação mínimo faturado trifásico créditos",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 5. Créditos no sistema",
+          "score": 0.58
+        }
+      ],
+      "tokens": {
+        "entrada": 9809,
+        "saida": 204,
+        "chamadas_llm": 5
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 7,
+        "sem_fonte": []
+      },
+      "resposta": "Na conta de maio de 2026, foram compensados 306 kWh. O consumo da rede no mês foi de 406 kWh, dos quais 100 kWh correspondem ao mínimo faturado da ligação trifásica, que não sai dos créditos. Para cobrir o excedente compensado de 306 kWh, foram utilizados 251 kWh injetados na rede no próprio mês e 55 kWh do saldo de créditos anteriores.\n\nFontes: creditos, buscar_documentos (agent/knowledge/regras-energia.md).",
+      "ms_total": 17972
+    },
+    {
+      "id": "e5eb3109-94db-4ae0-9ee1-8737e6ccc1b1",
+      "inicio": "2026-11-23T23:02:24.535Z",
+      "pergunta": "O saldo de créditos da conta de setembro bate com o de agosto?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "creditos",
+        "motivo": "A pergunta trata sobre saldo de créditos de energia e faturas mensais.",
+        "reserva": false,
+        "ms": 2903
+      },
+      "passos": [
+        {
+          "ferramenta": "creditos",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 1490
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "saldo de creditos agosto setembro",
+            "colecao": "Contas"
+          },
+          "ms": 0,
+          "ok": true,
+          "bytes": 3535
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "colecao": "Contas",
+            "consulta": "Conta 2026-08 agosto"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 3542
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "saldo de creditos agosto setembro",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-05-2026.json",
+          "titulo": "Conta 2026-05",
+          "score": 0.832
+        },
+        {
+          "consulta": "saldo de creditos agosto setembro",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-09-2026.json",
+          "titulo": "Conta 2026-09",
+          "score": 0.69
+        },
+        {
+          "consulta": "saldo de creditos agosto setembro",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-06-2026.json",
+          "titulo": "Conta 2026-06",
+          "score": 0.408
+        },
+        {
+          "consulta": "saldo de creditos agosto setembro",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-07-2026.json",
+          "titulo": "Conta 2026-07",
+          "score": 0.352
+        },
+        {
+          "consulta": "Conta 2026-08 agosto",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-08-2026.json",
+          "titulo": "Conta 2026-08",
+          "score": 1
+        },
+        {
+          "consulta": "Conta 2026-08 agosto",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-07-2026.json",
+          "titulo": "Conta 2026-07",
+          "score": 0.8
+        },
+        {
+          "consulta": "Conta 2026-08 agosto",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-05-2026.json",
+          "titulo": "Conta 2026-05",
+          "score": 0.272
+        },
+        {
+          "consulta": "Conta 2026-08 agosto",
+          "colecao": "Contas",
+          "caminho": "app/tests/fixtures/conta-06-2026.json",
+          "titulo": "Conta 2026-06",
+          "score": 0.209
+        }
+      ],
+      "tokens": {
+        "entrada": 9675,
+        "saida": 271,
+        "chamadas_llm": 4
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 13,
+        "sem_fonte": []
+      },
+      "resposta": "Sim, o saldo de créditos da conta de setembro de 2026 bate perfeitamente com o de agosto de 2026. A fatura de agosto encerrou com saldo de 1938,7 kWh. No mês de setembro, foram injetados 312,0 kWh e compensados 212,0 kWh — pois o mínimo faturado de 100,0 kWh não é compensado —, gerando um acréscimo de 100,0 kWh. Dessa forma, o saldo registrado na conta de setembro fechou exatamente em 2038,7 kWh, apresentando diferença de 0,0 kWh na conferência oficial.\n\nFontes: creditos, buscar_documentos (app/tests/fixtures/conta-08-2026.json, app/tests/fixtures/conta-09-2026.json)",
+      "ms_total": 17857
+    },
+    {
+      "id": "2313b29e-699b-49a9-a1a5-9b1fc5efa3a9",
+      "inicio": "2026-11-23T23:02:42.393Z",
+      "pergunta": "Quanto tempo meu saldo de créditos ainda dura?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "creditos",
+        "motivo": "A pergunta trata especificamente da estimativa de duração do saldo de créditos de energia.",
+        "reserva": false,
+        "ms": 4518
+      },
+      "passos": [
+        {
+          "ferramenta": "creditos",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 1490
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "validade dos créditos de energia expiração meses",
+            "colecao": "RegrasEnergia"
+          },
+          "ms": 1,
+          "ok": true,
+          "bytes": 1657
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "validade dos créditos de energia expiração meses",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 1. Sistema de compensação de energia (SCEE) > Validade dos créditos",
+          "score": 1
+        },
+        {
+          "consulta": "validade dos créditos de energia expiração meses",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 3. Itens da fatura > Ajuste CAT e energia injetada",
+          "score": 0.353
+        },
+        {
+          "consulta": "validade dos créditos de energia expiração meses",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 3. Itens da fatura > Iluminação pública",
+          "score": 0.276
+        },
+        {
+          "consulta": "validade dos créditos de energia expiração meses",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 1. Sistema de compensação de energia (SCEE) > O que é",
+          "score": 0.272
+        }
+      ],
+      "tokens": {
+        "entrada": 4191,
+        "saida": 163,
+        "chamadas_llm": 4
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 6,
+        "sem_fonte": []
+      },
+      "resposta": "Seu saldo atual acumulado é de 2084,3 kWh. Com base no consumo líquido médio recente de 1,7 kWh por dia, a estimativa é de que esse saldo dure aproximadamente 1.240 dias (cerca de 3 anos e 5 meses). Vale lembrar que, pelas regras do Sistema de Compensação de Energia Elétrica (SCEE), os créditos têm validade de 60 meses antes de expirarem.\n\nFontes: creditos e agent/knowledge/regras-energia.md (RegrasEnergia).",
+      "ms_total": 14923
+    },
+    {
+      "id": "e4c06fd2-d264-40c0-b5c4-9567e97ca3c9",
+      "inicio": "2026-11-23T23:02:57.316Z",
+      "pergunta": "A coleta da Tuya está funcionando?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "operacao",
+        "motivo": "Pergunta sobre o funcionamento da coleta de dados da Tuya.",
+        "reserva": false,
+        "ms": 4938
+      },
+      "passos": [
+        {
+          "ferramenta": "status_coleta",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 421
+        },
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "coleta tuya atrasada falha causa",
+            "colecao": "ProjetoDocs"
+          },
+          "ms": 5,
+          "ok": true,
+          "bytes": 4836
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "coleta tuya atrasada falha causa",
+          "colecao": "ProjetoDocs",
+          "caminho": "docs/superpowers/specs/2026-10-08-energia-casa-design.md",
+          "titulo": "Energia Casa — design (spec) > 5. Modelo de dados > Tabelas",
+          "score": 0.806
+        },
+        {
+          "consulta": "coleta tuya atrasada falha causa",
+          "colecao": "ProjetoDocs",
+          "caminho": "agent/README.md",
+          "titulo": "Assistente de energia (LangChain.js + Gemini + RAG no Weaviate) > Avaliação",
+          "score": 0.781
+        },
+        {
+          "consulta": "coleta tuya atrasada falha causa",
+          "colecao": "ProjetoDocs",
+          "caminho": "docs/superpowers/specs/2026-10-08-energia-casa-design.md",
+          "titulo": "Energia Casa — design (spec) > 10. Testes",
+          "score": 0.776
+        },
+        {
+          "consulta": "coleta tuya atrasada falha causa",
+          "colecao": "ProjetoDocs",
+          "caminho": "docs/superpowers/specs/2026-10-08-energia-casa-design.md",
+          "titulo": "Energia Casa — design (spec) > 9. Falhas e casos limite",
+          "score": 0.77
+        }
+      ],
+      "tokens": {
+        "entrada": 3604,
+        "saida": 253,
+        "chamadas_llm": 4
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 5,
+        "sem_fonte": []
+      },
+      "resposta": "A coleta da Tuya não está funcionando como esperado: seu diagnóstico atual é \"atrasada\", com a última rodada registrada há 120 minutos. Em contrapartida, a coleta da Solarman está \"em dia\", tendo sua última rodada ocorrida há 2 minutos. Como a Tuya deve coletar dados a cada 5 minutos ao longo de 24 horas, qualquer intervalo superior a 12 minutos caracteriza atraso. Segundo as especificações do projeto, as causas prováveis para falhas ou atrasos na Tuya envolvem instabilidade na API/rede, token expirado ou assinatura de teste da plataforma Tuya vencida. Quando isso ocorre, o incidente é registrado na tabela `collector_runs`, mantendo a consistência dos dados acumulados assim que o serviço for restabelecido.\n\nFontes: status_coleta, buscar_documentos (docs/superpowers/specs/2026-10-08-energia-casa-design.md).",
+      "ms_total": 19506
+    },
+    {
+      "id": "265443b4-b25f-4334-a3ad-ab4e5f72f5c5",
+      "inicio": "2026-11-23T23:03:16.824Z",
+      "pergunta": "A Solarman está sem dados novos há horas, a coleta falhou?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "operacao",
+        "motivo": "Trata-se de dúvida sobre atraso e falha na coleta de dados pela plataforma Solarman.",
+        "reserva": false,
+        "ms": 2851
+      },
+      "passos": [
+        {
+          "ferramenta": "status_coleta",
+          "args": {},
+          "ms": 1,
+          "ok": true,
+          "bytes": 426
+        }
+      ],
+      "recuperados": [],
+      "tokens": {
+        "entrada": 1274,
+        "saida": 124,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 3,
+        "sem_fonte": []
+      },
+      "resposta": "Não, a coleta da Solarman não falhou. A fonte Solarman está com diagnóstico de pausa noturna e idade de 185 minutos desde a última rodada, pois opera apenas entre 06:30 e 18:55 no horário de Brasília. Já a fonte Tuya funciona 24 horas, apresenta diagnóstico em dia e idade de 2 minutos na última rodada. Portanto, a ausência de novos dados da Solarman no período noturno é o comportamento normal esperado.\n\nFontes: status_coleta",
+      "ms_total": 11785
+    },
+    {
+      "id": "d13fd719-ca05-4ab5-9086-e68a559276ce",
+      "inicio": "2026-11-23T23:03:28.609Z",
+      "pergunta": "Por que o sistema não usa os contadores de energia da Tuya para calcular o que vai e vem da rede?",
+      "hoje": "2026-11-20",
+      "modelo": "gemini-3.8-flash",
+      "dados": "demo",
+      "store": "memory",
+      "rota": {
+        "expert": "operacao",
+        "motivo": "Trata do funcionamento técnico e da utilização dos medidores de energia Tuya na coleta de dados.",
+        "reserva": false,
+        "ms": 3882
+      },
+      "passos": [
+        {
+          "ferramenta": "buscar_documentos",
+          "args": {
+            "consulta": "contadores energia Tuya rede importação exportação"
+          },
+          "ms": 9,
+          "ok": true,
+          "bytes": 2250
+        },
+        {
+          "ferramenta": "status_coleta",
+          "args": {},
+          "ms": 2,
+          "ok": true,
+          "bytes": 425
+        }
+      ],
+      "recuperados": [
+        {
+          "consulta": "contadores energia Tuya rede importação exportação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 4. Como o sistema mede a energia > Importado e exportado da rede",
+          "score": 0.988
+        },
+        {
+          "consulta": "contadores energia Tuya rede importação exportação",
+          "colecao": "ProjetoDocs",
+          "caminho": "docs/superpowers/specs/2026-10-08-energia-casa-design.md",
+          "titulo": "Energia Casa — design (spec) > 4. Fontes de dados > 4.2 Tuya Cloud API",
+          "score": 0.71
+        },
+        {
+          "consulta": "contadores energia Tuya rede importação exportação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 6. Coleta e qualidade dos dados > Falhas conhecidas",
+          "score": 0.649
+        },
+        {
+          "consulta": "contadores energia Tuya rede importação exportação",
+          "colecao": "RegrasEnergia",
+          "caminho": "agent/knowledge/regras-energia.md",
+          "titulo": "Regras de energia usadas pelo assistente > 4. Como o sistema mede a energia > Fontes",
+          "score": 0.553
+        }
+      ],
+      "tokens": {
+        "entrada": 2306,
+        "saida": 241,
+        "chamadas_llm": 3
+      },
+      "checagem": {
+        "ok": true,
+        "verificados": 9,
+        "sem_fonte": []
+      },
+      "resposta": "O sistema não utiliza os contadores de energia da Tuya porque eles inflam a exportação para a rede em cerca de 30%. Entre 15/10 e 20/10/2026, os contadores registraram 62,0 kWh importados e 60,9 kWh exportados, enquanto a fatura da Neoenergia apontou 55 e 46 kWh, e o cálculo por integração da potência assinada resultou em 53,7 kWh e 47,0 kWh. Por esse motivo, a medição é feita integrando a potência assinada (`power_signed_w`). Operacionalmente, a fonte Solarman está com diagnóstico \"em dia\" (idade de 2 minutos) e a fonte Tuya também está com diagnóstico \"em dia\" (idade de 2 minutos).\n\nFontes: status_coleta, buscar_documentos (agent/knowledge/regras-energia.md).",
+      "ms_total": 18460
+    }
+  ]
+}

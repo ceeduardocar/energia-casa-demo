@@ -1,0 +1,93 @@
+{
+  "hoje": "2026-11-20",
+  "agora": "2026-11-20T15:00:00Z",
+  "dados": "demo (app/demo.js: curvas determinísticas por data e as contas de exemplo)",
+  "itens": [
+    {
+      "id": "consumo-media",
+      "pergunta": "Por que ontem consumi mais que a média?",
+      "expert": ["consumo"],
+      "ferramentas": ["comparar_periodo"],
+      "numeros": [19.49, 17.13],
+      "palavras": ["boiler"]
+    },
+    {
+      "id": "consumo-dia",
+      "pergunta": "Quanto a casa gerou e consumiu em 2026-11-15?",
+      "expert": ["consumo"],
+      "ferramentas": ["resumo_dia"],
+      "numeros": [12.18, 15.88]
+    },
+    {
+      "id": "consumo-autossuficiencia",
+      "pergunta": "Qual foi a autossuficiência de ontem?",
+      "expert": ["consumo"],
+      "ferramentas": ["resumo_dia"],
+      "numeros": [36]
+    },
+    {
+      "id": "creditos-minimo",
+      "pergunta": "Por que a conta de setembro veio com 100 kWh se eu injetei mais do que consumi?",
+      "expert": ["creditos"],
+      "ferramentas": ["creditos", "buscar_documentos"],
+      "numeros": [212],
+      "palavras": ["mínimo"],
+      "documento": "agent/knowledge/regras-energia.md"
+    },
+    {
+      "id": "creditos-maio",
+      "pergunta": "Quanto foi compensado na conta de maio de 2026?",
+      "expert": ["creditos"],
+      "ferramentas": ["creditos"],
+      "numeros": [306]
+    },
+    {
+      "id": "creditos-conferencia",
+      "pergunta": "O saldo de créditos da conta de setembro bate com o de agosto?",
+      "expert": ["creditos"],
+      "ferramentas": ["creditos"],
+      "numeros": [2038.67]
+    },
+    {
+      "id": "creditos-duracao",
+      "pergunta": "Quanto tempo meu saldo de créditos ainda dura?",
+      "expert": ["creditos"],
+      "ferramentas": ["creditos"]
+    },
+    {
+      "id": "operacao-tuya-atrasada",
+      "pergunta": "A coleta da Tuya está funcionando?",
+      "cenario": { "status": [
+        { "source": "solarman", "ok": true, "started_at": "2026-11-20T14:58:00Z", "age_minutes": 2 },
+        { "source": "tuya", "ok": true, "started_at": "2026-11-20T13:00:00Z", "age_minutes": 120 }
+      ] },
+      "expert": ["operacao"],
+      "ferramentas": ["status_coleta"],
+      "numeros": [120],
+      "palavras": ["atrasad"]
+    },
+    {
+      "id": "operacao-solarman-noite",
+      "pergunta": "A Solarman está sem dados novos há horas, a coleta falhou?",
+      "cenario": {
+        "agora": "2026-11-21T01:00:00Z",
+        "status": [
+          { "source": "solarman", "ok": true, "started_at": "2026-11-20T21:55:00Z", "age_minutes": 185 },
+          { "source": "tuya", "ok": true, "started_at": "2026-11-21T00:58:00Z", "age_minutes": 2 }
+        ]
+      },
+      "expert": ["operacao"],
+      "ferramentas": ["status_coleta"],
+      "palavras": ["pausa noturna"]
+    },
+    {
+      "id": "rag-contadores-tuya",
+      "pergunta": "Por que o sistema não usa os contadores de energia da Tuya para calcular o que vai e vem da rede?",
+      "offline": false,
+      "expert": ["operacao", "consumo"],
+      "ferramentas": ["buscar_documentos"],
+      "palavras": ["30%"],
+      "documento": "agent/knowledge/regras-energia.md"
+    }
+  ]
+}
